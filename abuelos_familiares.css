@@ -1,0 +1,145 @@
+/* ===== VARIABLES DE COLOR (se usan en todo el archivo) ===== */
+:root {
+    --fondo: #f6f1ea;          /* fondo de la página */
+    --tarjeta: #ffffff;        /* fondo de las tarjetas */
+    --texto: #2d2823;          /* color principal del texto */
+    --texto-suave: #74695d;    /* textos secundarios */
+    --borde: #e2d9cc;          /* color de los bordes */
+    --acento: #557a5f;         /* verde salvia: filtros y detalles */
+    --corazon: #c2415d;        /* rosa intenso: favoritos */
+}
+/* ===== REINICIO BÁSICO ===== */
+* {
+    box-sizing: border-box;    /* el padding no agranda los elementos */
+    margin: 0;
+    padding: 0;
+}
+/* Hace que el atributo "hidden" siempre oculte el elemento */
+[hidden] {
+    display: none !important;
+}
+/* ===== ESTILO GENERAL DE LA PÁGINA ===== */
+body {
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.5;
+    padding: 24px 16px;
+}
+/* Contenedor central con ancho máximo */
+.app {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+/* ===== ENCABEZADO ===== */
+.encabezado {
+    margin-bottom: 20px;
+}
+.encabezado h1 {
+    font-size: 2.1rem;
+    color: var(--acento);
+}
+.encabezado p {
+    color: var(--texto-suave);
+}
+.resumen {
+    margin-top: 4px;
+    font-weight: bold;
+}
+/* ===== FILTROS ===== */
+.filtros {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.filtro {
+    padding: 8px 16px;
+    background: var(--tarjeta);
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    cursor: pointer;
+}
+/* Filtro seleccionado (JavaScript le agrega la clase "activo") */
+.filtro.activo {
+    background: var(--acento);
+    border-color: var(--acento);
+    color: #fff;
+}
+.vacio {
+    color: var(--texto-suave);
+    margin-bottom: 16px;
+}
+/* ===== GALERÍA ===== */
+.galeria {
+    display: grid;
+    /* columnas automáticas: se acomodan según el ancho disponible */
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+/* ===== TARJETAS ===== */
+.tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    overflow: hidden;          /* recorta el retrato en las esquinas */
+}
+/* Tarjeta favorita (clase agregada con JavaScript) */
+.tarjeta.favorita {
+    border-color: var(--corazon);
+    box-shadow: 0 0 0 2px var(--corazon);
+}
+/* El retrato ocupa todo el ancho de la tarjeta */
+.retrato {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.contenido {
+    padding: 16px;
+}
+.contenido h2 {
+    font-size: 1.2rem;
+}
+.parentesco {
+    color: var(--acento);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.detalle {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+/* ===== BOTÓN FAVORITO ===== */
+.btn-fav {
+    margin: 12px 0;
+    padding: 8px 14px;
+    background: none;
+    color: var(--corazon);
+    border: 1px solid var(--corazon);
+    border-radius: 20px;
+    cursor: pointer;
+}
+.tarjeta.favorita .btn-fav {
+    background: var(--corazon);
+    color: #fff;
+}
+/* ===== RECUERDOS ===== */
+label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+}
+textarea:focus {
+    outline: 2px solid var(--acento);
+}

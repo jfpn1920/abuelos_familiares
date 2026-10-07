@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>abuelos familiares</title>
+    <link rel="stylesheet" href="abuelos_familiares.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="abuelos_familiares.js" defer></script>
+</head>
+<body>
+    <!--------------------------------------->
+    <!--|estructuracion_abuelos_familiares|-->
+    <!--------------------------------------->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="rostro" viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="var(--fondo-retrato)"/>
+            <path d="M8 100 Q8 70 50 68 Q92 70 92 100Z" fill="var(--ropa)"/>
+            <circle cx="50" cy="20" r="9" fill="var(--mono, none)"/>
+            <circle cx="50" cy="46" r="22" fill="var(--piel)"/>
+            <path d="M27 46 Q27 21 50 21 Q73 21 73 46 Q66 32 50 32 Q34 32 27 46Z" fill="var(--pelo)"/>
+            <circle cx="42" cy="47" r="2.5" fill="#2b2118"/>
+            <circle cx="58" cy="47" r="2.5" fill="#2b2118"/>
+            <g fill="none" stroke="var(--gafas, none)" stroke-width="1.5">
+                <circle cx="42" cy="47" r="6"/><circle cx="58" cy="47" r="6"/>
+            </g>
+            <path d="M42 57 Q50 64 58 57" fill="none" stroke="#2b2118" stroke-width="2" stroke-linecap="round"/>
+        </symbol>
+    </svg>
+    <!-- Contenedor principal de la aplicación -->
+    <main class="app">
+        <!-- ENCABEZADO: título, descripción y suma de edades -->
+        <header class="encabezado">
+            <h1>Abuelos Familiares</h1>
+            <p>Una pequeña galería de una familia ficticia.</p>
+            <p id="resumen" class="resumen"></p>
+        </header>
+        <!-- FILTROS: mostrar todos o solo los favoritos -->
+        <nav class="filtros">
+            <button class="filtro" data-filtro="todos" type="button">Todos</button>
+            <button class="filtro" data-filtro="favoritos" type="button">
+                Favoritos (<span id="contador">0</span>)
+            </button>
+        </nav>
+        <!-- Mensaje que aparece cuando no hay favoritos -->
+        <p id="vacio" class="vacio" hidden>Aún no tienes abuelos favoritos.</p>
+        <!-- GALERÍA: cuatro tarjetas (data-id identifica a cada abuelo al guardar) -->
+        <section class="galeria">
+            <article class="tarjeta" data-id="rosa">
+                <svg class="retrato" viewBox="0 0 100 100" role="img" aria-label="Retrato de la abuela Rosa"
+                        style="--fondo-retrato:#f4dfd0;--piel:#f1c9a5;--pelo:#d9d9d9;--mono:#d9d9d9;--ropa:#b25a6f"><use href="#rostro"/></svg>
+                <div class="contenido">
+                    <h2>Abuela Rosa</h2>
+                    <p class="parentesco">Abuela paterna</p>
+                    <p class="detalle">Mompox · <span class="edad" data-nacimiento="1944"></span> años</p>
+                    <p class="detalle">Le encanta cocinar sancocho los domingos.</p>
+                    <button class="btn-fav" data-fav type="button">♡ Favorito</button>
+                    <label for="recuerdo-rosa">Mi recuerdo</label>
+                    <textarea id="recuerdo-rosa" rows="2" placeholder="Escribe un recuerdo..."></textarea>
+                </div>
+            </article>
+            <article class="tarjeta" data-id="tomas">
+                <svg class="retrato" viewBox="0 0 100 100" role="img" aria-label="Retrato del abuelo Tomás"
+                    style="--fondo-retrato:#dbe5d8;--piel:#d9a77f;--pelo:#e6e6e6;--gafas:#3b3b3b;--ropa:#4d6b57"><use href="#rostro"/></svg>
+                <div class="contenido">
+                    <h2>Abuelo Tomás</h2>
+                    <p class="parentesco">Abuelo paterno</p>
+                    <p class="detalle">Barranquilla · <span class="edad" data-nacimiento="1941"></span> años</p>
+                    <p class="detalle">Cuenta historias de pesca y toca el acordeón.</p>
+                    <button class="btn-fav" data-fav type="button">♡ Favorito</button>
+                    <label for="recuerdo-tomas">Mi recuerdo</label>
+                    <textarea id="recuerdo-tomas" rows="2" placeholder="Escribe un recuerdo..."></textarea>
+                </div>
+            </article>
+            <article class="tarjeta" data-id="lucia">
+                <svg class="retrato" viewBox="0 0 100 100" role="img" aria-label="Retrato de la abuela Lucía"
+                    style="--fondo-retrato:#e3dcef;--piel:#e8b894;--pelo:#8a8a8a;--mono:#8a8a8a;--gafas:#6b4a2f;--ropa:#7561a8"><use href="#rostro"/></svg>
+                <div class="contenido">
+                    <h2>Abuela Lucía</h2>
+                    <p class="parentesco">Abuela materna</p>
+                    <p class="detalle">Santa Marta · <span class="edad" data-nacimiento="1948"></span> años</p>
+                    <p class="detalle">Teje mantas y sabe todos los refranes.</p>
+                    <button class="btn-fav" data-fav type="button">♡ Favorito</button>
+                    <label for="recuerdo-lucia">Mi recuerdo</label>
+                    <textarea id="recuerdo-lucia" rows="2" placeholder="Escribe un recuerdo..."></textarea>
+                </div>
+            </article>
+            <article class="tarjeta" data-id="mateo">
+                <svg class="retrato" viewBox="0 0 100 100" role="img" aria-label="Retrato del abuelo Mateo"
+                    style="--fondo-retrato:#f1e6c8;--piel:#c58e66;--pelo:#bdbdbd;--ropa:#b07a2c"><use href="#rostro"/></svg>
+                <div class="contenido">
+                    <h2>Abuelo Mateo</h2>
+                    <p class="parentesco">Abuelo materno</p>
+                    <p class="detalle">Montería · <span class="edad" data-nacimiento="1946"></span> años</p>
+                    <p class="detalle">Cuida su huerta y regala mangos a todo el barrio.</p>
+                    <button class="btn-fav" data-fav type="button">♡ Favorito</button>
+                    <label for="recuerdo-mateo">Mi recuerdo</label>
+                    <textarea id="recuerdo-mateo" rows="2" placeholder="Escribe un recuerdo..."></textarea>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
